@@ -9,7 +9,12 @@ namespace Data.Interfaces
 {
     public interface IProdutoRepository
     {
-        IQueryable<Produto> GetAll();
-        Task Add(Produto entity);
+        //IQueryable<Produto> GetAll();
+        //Task Add(Produto entity);
+
+        public interface IProdutoRepository
+        {
+            void SaveProdutos(List<Produto> livros);
+        }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Data.Interfaces;
 using Domain;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,29 +9,38 @@ namespace Data.Implementacion
 {
     public class ProdutoRepository : IProdutoRepository
     {
-        private readonly Contexto _db;
+        private readonly AppDbContext _db;
+        private readonly IProdutoRepository produtoRepository;
 
-        public ProdutoRepository(Contexto db)
+        //public ProdutoRepository(AppDbContext db)
+        //{
+        //    _db = db;
+        //}
+        public ProdutoRepository(AppDbContext contexto)
         {
-            _db = db;
+            this._db = contexto;
+            this.produtoRepository = produtoRepository;
         }
 
-        public async Task Add(ProdutoRepository entity)
+        public void SaveProdutos(List<Produto> produtos)
         {
-            await _db.AddAsync(entity);
-            await _db.SaveChangesAsync();
+            foreach (var produto in produtos)
+            {
+                _db.Set<Produto>().Add(new Produto(produto.Id, produto.Nome, produto.Quantidade, produto.Status));
+
+            }
+            _db.SaveChanges();
         }
 
-        public Task Add(Produto entity)
-        {
-            throw new NotImplementedException();
-        }
+        //public async Task Add(Produto entity)
+        //{
+        //    await _db.AddAsync(entity);
+        //    await _db.SaveChangesAsync();
+        //}
 
-        public IQueryable<Produto> GetAll()
-        {
-
-            return _db.Produto;
-
-        }
+        //public IQueryable<Produto> GetAll()
+        //{
+        //    return _db.Produto;
+        //}
     }
 }

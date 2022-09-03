@@ -5,6 +5,25 @@ namespace Domain
 {
     public class Produto
     {
+        private object p;
+
+        public Produto(Guid id, string nome, int quantidade, int status)
+        {
+            Id = id;
+            Nome = nome;
+            Quantidade = quantidade;
+            Status = status;
+        }
+
+        //public Produto(Guid id, string nome, int quantidade, object p, int status)
+        //{
+        //    Id = id;
+        //    Nome = nome;
+        //    Quantidade = quantidade;
+        //    this.p = p;
+        //    Status = status;
+        //}
+
         [Key]
         public Guid Id { get; set; }
 
