@@ -37,8 +37,8 @@ namespace Apresentacao
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Apresentacao", Version = "v1" });
             });
 
-            //services.AddSingleton<IProdutoRepository, ProdutoRepository>();
-            services.AddTransient<IProdutoRepository, ProdutoRepository>();
+            // services.AddSingleton<IProdutoRepository, ProdutoRepository>();
+             services.AddTransient<IProdutoRepository, ProdutoRepository>();
 
             services.AddDbContext<Contexto>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("ConnectionsString"))); 
