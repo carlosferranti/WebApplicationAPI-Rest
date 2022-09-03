@@ -30,7 +30,6 @@ namespace Apresentacao
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -39,8 +38,8 @@ namespace Apresentacao
 
             services.AddSingleton<IProdutoRepository, ProdutoRepository>();
 
-            services.AddDbContext<Contexto>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("ConnectionsString"))); 
+            services.AddDbContext<Contexto>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("ConnectionsString")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

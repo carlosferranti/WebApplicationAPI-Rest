@@ -1,7 +1,5 @@
 ﻿using Data.Interfaces;
 using Domain;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,22 +15,15 @@ namespace Data.Implementacion
             _db = db;
         }
 
-        public async Task Add(ProdutoRepository entity)
+        public async Task Add(Produto entity)
         {
             await _db.AddAsync(entity);
             await _db.SaveChangesAsync();
         }
 
-        public Task Add(Produto entity)
-        {
-            throw new NotImplementedException();
-        }
-
         public IQueryable<Produto> GetAll()
         {
-
             return _db.Produto;
-
         }
     }
 }
