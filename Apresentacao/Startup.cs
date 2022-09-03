@@ -30,17 +30,17 @@ namespace Apresentacao
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Apresentacao", Version = "v1" });
             });
 
-            services.AddSingleton<IProdutoRepository, ProdutoRepository>();
+            //services.AddSingleton<IProdutoRepository, ProdutoRepository>();
+            services.AddTransient<IProdutoRepository, ProdutoRepository>();
 
-            services.AddDbContext<Contexto>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("ConnectionsString"))); 
+            services.AddDbContext<Contexto>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("ConnectionsString")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
