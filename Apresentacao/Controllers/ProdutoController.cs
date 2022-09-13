@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain;
 
 namespace Apresentacao.Controllers
 {
@@ -12,6 +13,25 @@ namespace Apresentacao.Controllers
     public class ProdutoController : ControllerBase
     {
         private readonly IProdutoRepository _repository;
+
+		// GET api/values
+        [HttpGet]
+        //public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<Produto>> Get()
+        {
+            //return new string[] { "value1", "value2", "value3" };
+
+            //return _repository.Queryable();
+
+            return null; // _db.GetProdutos();
+        }
+
+        // GET api/values/5
+        [HttpGet("{id}")]
+        public ActionResult<string> Get(int id)
+        {
+            return "value";
+        }
 
         public ProdutoController(IProdutoRepository repository)
         {
